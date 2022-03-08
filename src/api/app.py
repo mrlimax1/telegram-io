@@ -42,7 +42,8 @@ async def read_item(data: str, r: Request):
     answer = AnswersInDB.parse_raw(data)
     with db_session:
         if select(s for s in Sites
-                  if s.name == answer.site_name):
+                  if s.name == answer.site_name
+                  and s.address == url):
             Answers(
                 site_name=answer.site_name,
                 data=answer.data.json(),
