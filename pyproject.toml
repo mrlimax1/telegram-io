@@ -3,13 +3,27 @@ name = "telegram-io"
 version = "0.1.0"
 description = ""
 authors = ["Evgeniy Smirnov <59017716+mrlimax1@users.noreply.github.com>"]
+packages = [
+    { include = "src" },
+    { include = "src/**/*.py" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 aiogram = "^2.19"
+python-decouple = "^3.6"
+fastapi = "^0.74.1"
+uvicorn = "^0.17.5"
+pony = "^0.7.16"
+psycopg2-binary = "^2.9.3"
+pydantic = {extras = ["email"], version = "^1.9.0"}
 
 [tool.poetry.dev-dependencies]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "src.main:start"
+
